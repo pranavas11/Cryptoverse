@@ -1,0 +1,418 @@
+:root {
+  --text-primary:#000;
+  --bgPrimary:#fff;
+  --bgSecondary: #F9F9F9;
+  --pink: #0071bd;
+  --light-blue: #e6f7ff;
+  --border: #d9d9d9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  display: flex;
+  /*text-align: center;*/
+  overflow: hidden;
+}
+
+.app-name {
+  color: orange !important;
+  text-decoration: none !important;
+}
+
+.app-name:hover {
+  color: red !important;
+}
+
+a:hover{
+  color: rgb(135, 223, 21) !important;
+}
+
+.navbar {
+  flex: 0.2;
+  background-color: rgb(0, 21, 41);
+  text-align: center;
+}
+
+.routes{
+  padding: 20px;
+}
+
+/* Navbar,jsx */
+/* ---------- */
+.nav-container {
+  position: relative;
+  left: 0;
+  margin: 10px;
+  height: 100vh;
+  margin: 0;
+  background-color: rgb(0, 21, 41);
+}
+
+.logo-container {
+  background-color: #001529;
+  display: flex;
+  padding: 30px;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  margin: 15px;
+}
+
+.logo a {
+ color: white;
+}
+
+.menu-control-container {
+  display: none !important;
+  position: absolute !important;
+  right: 10px !important;
+  top: 25px !important;
+  font-size: 1.3rem !important;
+  background-color: var(--bgSecondary) !important;
+  border: none !important;
+}
+
+.menu-link {
+  font-size: 19px;
+}
+
+.menu-icon {
+  font-size: 25px;
+}
+
+.loader{
+  height: 81vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  flex: 0.8;
+  width: 100%;
+  text-align: left;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Homepage.jsx */
+/* ------------ */
+.home-heading-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.show-more {
+  margin-top: 0px !important;
+}
+
+
+/* Cryptocurrencies.jsx */
+/* -------------------- */
+.search-crypto {
+  margin: 20px auto 30px auto;
+  width: 250px;
+}
+
+.crypto-card-container {
+  min-height: 65vh !important;
+}
+
+.crypto-card {
+  min-width: 250px;
+}
+
+.crypto-card .crypto-image {
+  width:35px;
+}
+
+.select-news {
+  width: 180px;
+}
+
+.news-card {
+  height: auto;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.news-image-container {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.news-title {
+  width: 100%;
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  margin-bottom: 11px;
+}
+
+.news-image-container img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 9px;
+  padding-left: 5px;
+}
+
+.news-card p {
+  color: black;
+  margin: 10px 0px !important;
+  line-height: 1.5;
+}
+
+.provider-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 11px;
+}
+
+.provider-name {
+  margin-left: 11px;
+  font-weight: 500;
+  color: #555;
+}
+
+/* CryptoDetails.jsx */
+/* ----------------- */
+.coin-detail-container{
+  margin: 30px;
+}
+
+.coin-heading-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-bottom: 1px solid var(--border);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  gap: 10px;
+}
+
+.coin-heading-container .coin-name{
+  font-weight: 900;
+  color: var(--pink);
+}
+
+.coin-heading-container p{
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.stats-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.stats-container h2{
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-top: 20px;
+  color: var(--pink);
+}
+
+.coin-details-heading{
+  font-weight: 700 !important;
+  margin-top: 20px !important;
+  color: var(--pink) !important;
+}
+
+.coin-stats{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  font-size: 1rem;
+  opacity: 0.9;
+  padding: 20px;
+
+}
+
+.coin-stats-name{
+  display: flex;
+  gap: 10px;
+  font-size: 1rem;
+}
+
+.stats{
+  font-weight: 800;
+}
+
+.coin-value-statistics-heading p{
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.coin-desc-link{
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+  padding-top: 20px;
+}
+
+.coin-desc-link h2{
+  font-weight: 700;
+  color: var(--pink);
+}
+
+.coin-desc-link p{
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.coin-desc-link a{
+  color: var(--pink);
+}
+
+.coin-desc-link h3{
+  font-weight: 700;
+}
+
+.coin-desc{
+  flex: 0.5;
+}
+
+.coin-links{
+padding: 0px 20px;
+  flex: 0.5;
+}
+
+.coin-link{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  padding: 20px;
+}
+
+.link-name{
+  text-transform: capitalize;
+  font-size: 1rem;
+}
+
+.coin-link a{
+  color: var(--pink);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.coin-link:hover, .coin-stats:hover{
+  background-color: var(--bgSecondary);
+}
+
+/* LineChart.jsx */
+/* ------------- */
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  color: #0071bd;
+}
+
+.chart-title {
+  color: #0071bd !important;
+}
+
+.price-container {
+  display: flex !important;
+  gap: 20px !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+}
+
+.price-change {
+  font-weight: 900 !important;
+}
+
+.current-price {
+  margin-top: 0px !important;
+  font-weight: 900 !important;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  align-items: center;
+  background-color: #001529;
+}
+
+@media screen and (max-width: 1300px) {
+  .main {
+    margin-left: 50px;
+  }
+}
+
+@media screen and (max-width:1170px){
+  .main{
+      margin-left: 50px;
+  }
+}
+
+@media screen and (max-width:1000px){
+  .main{
+      margin-left: 100px;
+  }
+}
+
+@media screen and (max-width:800px){
+  .app{
+      flex-direction: column;
+      overflow: hidden;
+  }
+
+  .navbar{
+      flex: 1;
+  }
+
+  .main{
+      flex: 1;
+      margin-top: 90px;
+      margin-left: 0px;
+      margin-right: 10px;
+  }
+
+  .nav-container{
+      height: 8vh;
+      position:fixed;
+      width: 100%;
+      z-index: 100;
+      background-color: var(--bgSecondary);
+  }
+
+  .menu-control-container{
+      display: block !important;
+  }
+
+  .ant-menu{
+      position: absolute;
+      right: 0px;
+  }
+
+  .home-title{
+      font-size: 1.5rem !important;
+  }
+
+  .show-more{
+      font-size: 1.3rem !important;
+  }
+}

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Typography, Row, Col, Avatar, Card, Select } from 'antd';
+import { Typography, Row, Col, Card, Select } from 'antd';
 import moment from 'moment';
 import { useGetCryptosQuery } from '../services/cryptoAPI';
 import { useGetCryptoNewsQuery } from '../services/cryptoNewsAPI';
@@ -9,23 +8,24 @@ import Loader from './Loader';
 const { Text, Title } = Typography;
 const { Option } = Select;
 
-const demoImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
+const defaultImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
 
 const News = ({ simplified }) => {
     const newsCount = simplified ? 10 : 100;
     const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
     const { data } = useGetCryptosQuery(100);
     const { data: cryptoNews } = useGetCryptoNewsQuery({count: newsCount});
-    console.log("the crypto news is: ", cryptoNews);
+    //console.log("the crypto news is: ", cryptoNews);
 
     if (!cryptoNews) return <Loader />;
 
-    // Slice the news array if simplified to show only 10 articles
+    // slice the news array if simplified to show only 10 articles
     const displayedNews = simplified ? cryptoNews.slice(0, 9) : cryptoNews;
 
     return (
         <div>
             <Row gutter={[24, 24]}>
+                {/* NEEDS TESTING */}
                 {!simplified && (
                     <Col span={24}>
                         <Select showSearch
@@ -48,7 +48,7 @@ const News = ({ simplified }) => {
                             <a href={news.url} target='_blank' rel='noreferrer'>
                                 <div className='news-image-container'>
                                     <Title className='news-title' level={4}>{news.title}</Title>
-                                    <img src={news?.urlToImage || demoImage} alt='news image' />
+                                    <img src={news?.urlToImage || defaultImage} alt='news icon' />
                                 </div>
                                 <p>{news.description && (news.description.length > 100 ? `${news.description.substring(0, 100)}...` : news.description)}</p>
                                 <div className='provider-container'>

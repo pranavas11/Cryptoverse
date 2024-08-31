@@ -6,7 +6,6 @@ import App from './App';
 import store from './app/store';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
-import { DatePicker } from 'antd';
 import 'antd/dist/reset.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

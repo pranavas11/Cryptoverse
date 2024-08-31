@@ -7,6 +7,7 @@ const cryptoNewsHeaders = {
 
 const createRequest = (url) => ({url, headers: cryptoNewsHeaders});
 
+// fetch the /news endpoint from the API
 export const cryptoNewsAPI = createApi({
     reducerPath: 'cryptoNewsAPI',
     baseQuery: fetchBaseQuery({baseUrl: process.env.REACT_APP_NEWS_API_URL}),

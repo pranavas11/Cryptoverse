@@ -1,6 +1,6 @@
 :root {
-  --text-primary:#000;
-  --bgPrimary:#fff;
+  --text-primary: #000;
+  --bgPrimary: #fff;
   --bgSecondary: #F9F9F9;
   --pink: #0071bd;
   --light-blue: #e6f7ff;
@@ -28,7 +28,7 @@
   color: red !important;
 }
 
-a:hover{
+a:hover {
   color: rgb(135, 223, 21) !important;
 }
 
@@ -36,10 +36,17 @@ a:hover{
   flex: 0.2;
   background-color: rgb(0, 21, 41);
   text-align: center;
+  position: fixed; /* Fixes the navbar in place */
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 100; /* Ensures it stays on top of other elements */
+  width: 370px; /* Set a fixed width for larger screens */
+  transition: all 0.3s ease; /* Smooth transition for resizing */
 }
 
-.routes{
-  padding: 20px;
+.routes {
+  padding: 30px;
 }
 
 /* Navbar,jsx */
@@ -66,7 +73,7 @@ a:hover{
 }
 
 .logo a {
- color: white;
+  color: white;
 }
 
 .menu-control-container {
@@ -87,7 +94,7 @@ a:hover{
   font-size: 25px;
 }
 
-.loader{
+.loader {
   height: 81vh;
   display: flex;
   justify-content: center;
@@ -95,11 +102,12 @@ a:hover{
 }
 
 .main {
-  flex: 0.8;
-  width: 100%;
+  margin-left: 375px;
+  padding: 30px;
   text-align: left;
   padding-left: 15px;
   padding-right: 15px;
+  transition: all 0.3s ease;
 }
 
 /* Homepage.jsx */
@@ -121,6 +129,7 @@ a:hover{
 .search-crypto {
   margin: 20px auto 30px auto;
   width: 250px;
+  background-color: #0071bd;
 }
 
 .crypto-card-container {
@@ -132,11 +141,17 @@ a:hover{
 }
 
 .crypto-card .crypto-image {
-  width:35px;
+  width: 35px;
 }
 
 .select-news {
   width: 180px;
+}
+
+.select-timeperiod {
+  width: 200px !important;
+  margin-top: 20px !important;
+  margin-bottom: 25px;
 }
 
 .news-card {
@@ -191,11 +206,11 @@ a:hover{
 
 /* CryptoDetails.jsx */
 /* ----------------- */
-.coin-detail-container{
+.coin-detail-container {
   margin: 30px;
 }
 
-.coin-heading-container{
+.coin-heading-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -206,38 +221,38 @@ a:hover{
   gap: 10px;
 }
 
-.coin-heading-container .coin-name{
+.coin-heading-container .coin-name {
   font-weight: 900;
   color: var(--pink);
 }
 
-.coin-heading-container p{
+.coin-heading-container p {
   font-size: 1rem;
   opacity: 0.9;
   margin-bottom: 20px;
 }
 
-.stats-container{
+.stats-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 40px;
 }
 
-.stats-container h2{
+.stats-container h2 {
   font-weight: 700;
   font-size: 1.4rem;
   margin-top: 20px;
   color: var(--pink);
 }
 
-.coin-details-heading{
+.coin-details-heading {
   font-weight: 700 !important;
   margin-top: 20px !important;
   color: var(--pink) !important;
 }
 
-.coin-stats{
+.coin-stats {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid var(--border);
@@ -247,56 +262,56 @@ a:hover{
 
 }
 
-.coin-stats-name{
+.coin-stats-name {
   display: flex;
   gap: 10px;
   font-size: 1rem;
 }
 
-.stats{
+.stats {
   font-weight: 800;
 }
 
-.coin-value-statistics-heading p{
+.coin-value-statistics-heading p {
   font-size: 1rem;
   opacity: 0.9;
 }
 
-.coin-desc-link{
+.coin-desc-link {
   display: flex;
   gap: 40px;
   margin-top: 40px;
   padding-top: 20px;
 }
 
-.coin-desc-link h2{
+.coin-desc-link h2 {
   font-weight: 700;
   color: var(--pink);
 }
 
-.coin-desc-link p{
+.coin-desc-link p {
   font-size: 1rem;
   opacity: 0.9;
 }
 
-.coin-desc-link a{
+.coin-desc-link a {
   color: var(--pink);
 }
 
-.coin-desc-link h3{
+.coin-desc-link h3 {
   font-weight: 700;
 }
 
-.coin-desc{
+.coin-desc {
   flex: 0.5;
 }
 
-.coin-links{
-padding: 0px 20px;
+.coin-links {
+  padding: 0px 20px;
   flex: 0.5;
 }
 
-.coin-link{
+.coin-link {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -304,18 +319,19 @@ padding: 0px 20px;
   padding: 20px;
 }
 
-.link-name{
+.link-name {
   text-transform: capitalize;
   font-size: 1rem;
 }
 
-.coin-link a{
+.coin-link a {
   color: var(--pink);
   font-weight: 700;
   font-size: 1rem;
 }
 
-.coin-link:hover, .coin-stats:hover{
+.coin-link:hover,
+.coin-stats:hover {
   background-color: var(--bgSecondary);
 }
 
@@ -348,10 +364,65 @@ padding: 0px 20px;
   font-weight: 900 !important;
 }
 
+/* Exchanges.jsx */
+/* ------------- */
+.exchanges-container {
+  width: 235%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.table-header {
+  font-weight: bold;
+  background-color: #f0f2f5;
+  padding: 10px 0;
+  border-bottom: 2px solid #d9d9d9;
+}
+
+.table-row {
+  padding: 10px 0;
+  border-bottom: 1px solid #e8e8e8;
+  transition: background-color 0.3s ease;
+}
+
+.table-row:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.table-row:hover {
+  background-color: #e6f7ff;
+}
+
+.table-row a {
+  color: #0071bd;
+  text-decoration: none;
+}
+
+.table-row a:hover {
+  text-decoration: underline;
+}
+
+.table-row div {
+  font-size: 14px;
+  text-align: left;
+  padding: 5px 0;
+}
+
+.table-row .ant-col-2,
+.table-header .ant-col-2 {
+  text-align: center;
+}
+
 .footer {
+  width: 100%;
+  max-width: 1300px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 30px;
   align-items: center;
   background-color: #001529;
 }
@@ -362,57 +433,99 @@ padding: 0px 20px;
   }
 }
 
-@media screen and (max-width:1170px){
-  .main{
-      margin-left: 50px;
+@media screen and (max-width:1170px) {
+  .main {
+    margin-left: 50px;
   }
 }
 
-@media screen and (max-width:1000px){
-  .main{
-      margin-left: 100px;
+@media screen and (max-width:1000px) {
+  .main {
+    margin-left: 100px;
   }
 }
 
-@media screen and (max-width:800px){
-  .app{
-      flex-direction: column;
-      overflow: hidden;
+@media screen and (max-width:800px) {
+  .app {
+    flex-direction: column;
+    overflow: hidden;
   }
 
-  .navbar{
-      flex: 1;
+  .navbar {
+    flex: 1;
   }
 
-  .main{
-      flex: 1;
-      margin-top: 90px;
-      margin-left: 0px;
-      margin-right: 10px;
+  .main {
+    flex: 1;
+    margin-top: 90px;
+    margin-left: 0px;
+    margin-right: 10px;
   }
 
-  .nav-container{
-      height: 8vh;
-      position:fixed;
-      width: 100%;
-      z-index: 100;
-      background-color: var(--bgSecondary);
+  .nav-container {
+    height: 8vh;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    background-color: var(--bgSecondary);
   }
 
-  .menu-control-container{
-      display: block !important;
+  .menu-control-container {
+    display: block !important;
   }
 
-  .ant-menu{
-      position: absolute;
-      right: 0px;
+  .ant-menu {
+    position: absolute;
+    right: 0px;
   }
 
-  .home-title{
-      font-size: 1.5rem !important;
+  .home-title {
+    font-size: 1.5rem !important;
   }
 
-  .show-more{
-      font-size: 1.3rem !important;
+  .show-more {
+    font-size: 1.3rem !important;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    width: 60px; /* Reduce the navbar width on smaller screens */
+  }
+
+  .main {
+    margin-left: 60px; /* Adjust the main content margin on smaller screens */
+  }
+
+  .menu-link {
+    display: none; /* Hide menu links when collapsed */
+  }
+
+  .menu-icon {
+    display: inline-block; /* Keep icons visible */
+  }
+
+  .logo-container {
+    flex-direction: column; /* Stack logo and icon vertically */
+  }
+
+  .logo {
+    font-size: 1.2rem; /* Reduce the logo font size */
+  }
+
+  .logo a {
+    color: white;
+  }
+}
+
+/* Medium screen adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .navbar {
+    width: 200px; /* Slightly reduce navbar width for medium screens */
+  }
+
+  .main {
+    margin-left: 200px; /* Adjust the main content margin for medium screens */
   }
 }

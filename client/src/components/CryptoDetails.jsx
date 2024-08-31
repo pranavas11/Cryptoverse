@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import HTMLReactParser from 'html-react-parser';
-import axios from 'axios';
-import {load} from 'cheerio';
 import millify from 'millify';
 import { Typography, Row, Col, Select } from 'antd';
 import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCircleOutlined, StopOutlined, TrophyOutlined, CheckOutlined, NumberOutlined, ThunderboltOutlined } from '@ant-design/icons';
@@ -16,18 +14,17 @@ const { Option } = Select;
 const CryptoDetails = () => {
     const { coinID } = useParams();
     const [timePeriod, setTimePeriod] = useState('7d');
+
     const { data, isFetching } = useGetCryptoDetailsQuery(coinID);
-    console.log("data in cryptodetails is: ", data);
+    //console.log("data in cryptodetails is: ", data);
+
     const {data: coinHistory} = useGetCryptoHistoryQuery({coinID: coinID, timePeriod: timePeriod});
-    console.log("the coin history in crypto details is: ", coinHistory);
+    //console.log("the coin history in crypto details is: ", coinHistory);
+
     const cryptoDetails = data?.data?.coin;
-    console.log("cryptoDetails: ", cryptoDetails);
+    //console.log("cryptoDetails: ", cryptoDetails);
 
-    const [cryptoDescription, setCryptoDescription] = useState('');
-    const [moreInfoLink, setMoreInfoLink] = useState('');
-    //const [isLoading, setIsLoading] = useState(true);
-
-    //if (isFetching) return <Loader />;
+    if (isFetching) return <Loader />;
 
     const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
 
@@ -47,56 +44,8 @@ const CryptoDetails = () => {
         { title: 'Circulating Supply', value: `$ ${cryptoDetails?.supply?.circulating && millify(cryptoDetails?.supply?.circulating)}`, icon: <ExclamationCircleOutlined /> },
     ];
 
-    useEffect(() => {
-        if (cryptoDetails) {
-            const fetchCryptoDetails = async () => {
-                try {
-                    const cryptoName = cryptoDetails.name.toLowerCase();
-                    const cryptoSymbol = cryptoDetails.symbol.toLowerCase();
-                    const url = `https://cors-anywhere.herokuapp.com/https://coinranking.com/coin/${coinID}+${cryptoName}-${cryptoSymbol}`;
-                    //const response = await axios.get(url);
-                    const response = await axios.get(url, {
-                        headers: {
-                            'Origin': 'http://localhost:3000',  // or any other origin you want to simulate
-                            'x-requested-with': 'XMLHttpRequest'
-                        }
-                    });
-                    const html = response.data;
-                    //console.log("html is: ", html);
-                    const $ = load(html);
-
-                    // Extract the description from all <p> tags inside the <div id="description">
-                    let descriptionText = '';
-                    $('#description .double_section .description .article p').each((index, element) => {
-                        descriptionText += $(element).text() + ' ';
-                    });
-
-                    setCryptoDescription(descriptionText.trim());
-
-                    // Check for the presence of the <a> tag and set the link
-                    const moreInfoElement = $('#description .double_section a.button-new-style');
-                    if (moreInfoElement.length > 0) {
-                        setMoreInfoLink(moreInfoElement.attr('href'));
-                    } else {
-                        setMoreInfoLink(url);
-                    }
-
-                    //setIsLoading(false);
-                } catch (error) {
-                    console.error("Error fetching the crypto details:", error);
-                    //setIsLoading(false);
-                }
-            };
-
-            fetchCryptoDetails();
-        }
-    }, [cryptoDetails, coinID]);
-
-    if (isFetching) return <Loader />;
-
     return (
         <div>
-            <h1>CryptoDetails: {coinID}</h1>
             <Col className='coin-detail-container'>
                 <Col className='coin-heading-container'>
                     <Title level={2} className='coin-name'>
@@ -150,10 +99,10 @@ const CryptoDetails = () => {
                 <Col className='coin-desc-link'>
                     <Row className='coin-desc'>
                         <Title level={3} className='coin-details-heading'>What is {cryptoDetails.name}</Title>
-                        {HTMLReactParser(cryptoDetails.description)}
-                        <p style={{ fontSize: '16px', lineHeight: '1.6' }}>{cryptoDescription}</p>
-                        <a href={moreInfoLink} target="_blank" rel="noreferrer">Read more about this cryptocurrency</a>
+                        <p>{HTMLReactParser(cryptoDetails.description)}</p>
+                        <a href={`https://coinranking.com/coin/${coinID}+${cryptoDetails.name.toLowerCase()}-${cryptoDetails.symbol.toLowerCase()}`} target="_blank" rel="noreferrer">Read more about this cryptocurrency</a>
                     </Row>
+                    
                     <Col className='coin-links'>
                         <Title level={3} className="coin-details-heading">{cryptoDetails.name} Links</Title>
                         {cryptoDetails.links?.map((link) => (

@@ -7,6 +7,7 @@ const cryptoAPIHeaders = {
 
 const createRequest = (url) => ({url, headers: cryptoAPIHeaders});
 
+// fetch all required endpoints for the Coinranking API
 export const cryptoAPI = createApi({
     reducerPath: 'cryptoAPI',
     baseQuery: fetchBaseQuery({baseUrl: process.env.REACT_APP_CRYPTO_API_URL}),

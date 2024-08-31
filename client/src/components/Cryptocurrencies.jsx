@@ -4,7 +4,6 @@ import millify from 'millify';
 import { Card, Row, Col, Input } from 'antd';
 import { useGetCryptosQuery } from '../services/cryptoAPI';
 import Loader from './Loader';
-import { current } from '@reduxjs/toolkit';
 
 const Cryptocurrencies = ({ simplified }) => {
     const cryptoCount = simplified ? 10 : 100;

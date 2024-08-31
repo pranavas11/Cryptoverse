@@ -20,6 +20,7 @@ function App() {
               <Route exact path="/crypto/:coinID" element={<CryptoDetails />} />
               <Route exact path="/exchanges" element={<Exchanges />} />
               <Route exact path="/news" element={<News />} />
+              <Route path='/*' element={<p>404! Not Found!</p>} />
             </Routes>
           </div>
         </Layout>
